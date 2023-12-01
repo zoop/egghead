@@ -1,0 +1,493 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Egghead - A coin management system",
+    "description": "This is an API swagger file for the egghead backend which is a coin management system",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "Products",
+      "description": "Endpoints related to products"
+    },
+    {
+      "name": "Users",
+      "description": "Endpoints related to users"
+    },
+    {
+      "name": "Transactions",
+      "description": "Endpoints related to transactions"
+    }
+  ],
+  "paths": {
+    "/internal/api/v1/product/{productID}": {
+      "get": {
+        "summary": "Get a product",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "productID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a product",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "productID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request body for updating a product",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Product updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a product",
+        "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "productID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Product deleted successfully"
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      }
+    },
+    "/internal/api/v1/products": {
+      "get": {
+        "summary": "Get all products",
+        "tags": ["Products"],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Register a product",
+        "tags": ["Products"],
+        "requestBody": {
+          "description": "Request body for registering a product",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Product created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/private/api/v1/user/{userID}/balance": {
+      "get": {
+        "summary": "Get user balance",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserBalanceResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/private/api/v1/user/{userID}/transactions": {
+      "get": {
+        "summary": "Get all user transactions",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserTransactionsResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/private/api/v1/user/{userID}/transactions/{transactionID}": {
+      "get": {
+        "summary": "Get a user transaction",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "transactionID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserTransactionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User or transaction not found"
+          }
+        }
+      }
+    },
+    "/private/api/v1/user/{userID}/debit": {
+      "post": {
+        "summary": "Debit an amount from the user",
+        "tags": ["Transactions"],
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request body for debiting an amount",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DebitRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Amount debited successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found or insufficient balance"
+          }
+        }
+      }
+    },
+    "/private/api/v1/user/{userID}/credit": {
+      "post": {
+        "summary": "Credit an amount to the user",
+        "tags": ["Transactions"],
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request body for crediting an amount",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreditRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Amount credited successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProductResponse": {
+            "type": "object",
+            "properties": {
+              "product": {
+                "type": "object",
+                "properties": {
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "deleted_at": {
+                    "type": ["string", "null"],
+                    "format": "date-time"
+                  },
+                  "uid": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "metadata": {
+                    "type": ["object", "null"]
+                  }
+                },
+                "required": ["created_at", "updated_at", "uid", "slug", "name"]
+              }
+            },
+            "required": ["product"]
+          },
+      "ProductUpdateRequest": {
+        "type": "object",
+        "properties": {
+            "message": "string"
+        }
+      },
+      "ProductsListResponse": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "updated_at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "deleted_at": {
+                  "type": ["string", "null"],
+                  "format": "date-time"
+                },
+                "uid": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "metadata": {
+                  "type": ["object", "null"]
+                }
+              },
+              "required": ["created_at", "updated_at", "uid", "slug", "name"]
+            }
+          },
+          "totalItems": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          }
+        },
+        "required": ["page", "products", "totalItems", "totalPages"]
+      },      
+      "ProductCreateRequest": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "A message describing the result of the operation."
+              },
+              "result": {
+                "type": "object",
+                "properties": {
+                  "uid": {
+                    "type": "string",
+                    "description": "The unique identifier for the product."
+                  },
+                  "slug": {
+                    "type": "string",
+                    "description": "A short, unique string representing the product."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the product."
+                  },
+                  "metadata": {
+                    "type": ["object", "null"],
+                    "description": "Additional metadata associated with the product, if available."
+                  }
+                }
+              }
+            },
+            "required": ["message", "result"]
+          },
+      "UserBalanceResponse": {
+        "type": "object",
+        "properties": {
+            "balance": "integer"
+        }
+      },
+      "UserTransactionsResponse": {
+        "type": "object"
+      },
+      "UserTransactionResponse": {
+        "type": "object"
+      },
+      "DebitRequest": {
+        "type": "object"
+      },
+      "CreditRequest": {
+        "type": "object"
+      },
+      "TransactionResponse": {
+        "type": "object"
+      }
+    }
+  }
+}

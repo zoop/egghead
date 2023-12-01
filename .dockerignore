@@ -1,0 +1,12 @@
+# git files
+.git
+
+# env files
+.env
+
+# other unneccessary files
+.env.sample
+k8s/
+gcp/
+.vscode/
+.github/

@@ -1,0 +1,530 @@
+{
+	"info": {
+		"_postman_id": "cca33456-a47f-4fc7-9f25-8c5b5b1dc642",
+		"name": "Egghead - API Endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29380795"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "GET product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/internal/api/v1/product/:productID",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"internal",
+								"api",
+								"v1",
+								"product",
+								":productID"
+							],
+							"variable": [
+								{
+									"key": "productID",
+									"value": "ckof0kpccoleuoef4c4g"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test oopsgin etst\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/internal/api/v1/product/:productID",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"internal",
+								"api",
+								"v1",
+								"product",
+								":productID"
+							],
+							"variable": [
+								{
+									"key": "productID",
+									"value": "ckof0kpccoleuoef4c4g"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/internal/api/v1/product/:productID",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"internal",
+								"api",
+								"v1",
+								"product",
+								":productID"
+							],
+							"variable": [
+								{
+									"key": "productID",
+									"value": "cko2iqhccol4d4a23sn0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/internal/api/v1/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"internal",
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Zoopsign Test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/internal/api/v1/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"internal",
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Get Balance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-product-id",
+								"value": "ckoblfpccol8h545iui0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/private/api/v1/user/:userID/balance",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"private",
+								"api",
+								"v1",
+								"user",
+								":userID",
+								"balance"
+							],
+							"variable": [
+								{
+									"key": "userID",
+									"value": "jssdfsdfgdsdsfdfsf"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all transaction",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-product-id",
+								"value": "ckoblfpccol8h545iui0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/private/api/v1/user/:userID/transactions",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"private",
+								"api",
+								"v1",
+								"user",
+								":userID",
+								"transactions"
+							],
+							"variable": [
+								{
+									"key": "userID",
+									"value": "jssdfsdfgdsdsfdfsf"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a transaction",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-product-id",
+								"value": "ckoblfpccol8h545iui0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/private/api/v1/user/:userID/transactions/:transactionID",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"private",
+								"api",
+								"v1",
+								"user",
+								":userID",
+								"transactions",
+								":transactionID"
+							],
+							"variable": [
+								{
+									"key": "userID",
+									"value": "jssdfsdfgdsdsfdfsf"
+								},
+								{
+									"key": "transactionID",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Debit amount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-product-id",
+								"value": "ckoblfpccol8h545iui0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/private/api/v1/user/:userID/debit",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"private",
+								"api",
+								"v1",
+								"user",
+								":userID",
+								"debit"
+							],
+							"variable": [
+								{
+									"key": "userID",
+									"value": "jssdfsdfgdsdsfdfsf"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit amount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-product-id",
+								"value": "ckoblfpccol8h545iui0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/private/api/v1/user/:userID/credit",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"private",
+								"api",
+								"v1",
+								"user",
+								":userID",
+								"credit"
+							],
+							"variable": [
+								{
+									"key": "userID",
+									"value": "jssdfsdfgdsdsfdfsf"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health",
+			"item": [
+				{
+					"name": "Liveness Probe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/health/liveness",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"health",
+								"liveness"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Readiness Probe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/health/readiness",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"health",
+								"readiness"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Startup Probe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/health/startup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"health",
+								"startup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-product-id",
+								"value": "ckof0kpccoleuoef4c4g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bhargav sdf sdf test\",\n    \"uid\": \"jssdfsdfgdsdsfdfsf\",\n    \"balance\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/private/api/v1/user/register",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"private",
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Archieve User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-product-id",
+								"value": "ckoblfpccol8h545iui0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/private/api/v1/user/:userID/archieve",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"private",
+								"api",
+								"v1",
+								"user",
+								":userID",
+								"archieve"
+							],
+							"variable": [
+								{
+									"key": "userID",
+									"value": "jssdfsdfgdsdfsf"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "{{host}}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/swagger",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"swagger"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:3005",
+			"type": "string"
+		}
+	]
+}
